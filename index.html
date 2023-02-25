@@ -5,17 +5,62 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- font import link -->
+    <link href="https://fonts.cdnfonts.com/css/kaisei-opti?styles=148947,148945" rel="stylesheet">
+    <!-- css import  link -->
     <link rel="stylesheet" href="css/index.css">
     <title>Document</title>
 </head>
 
 <body>
-    <div id="app">
+    <main>
+        <div class="container">
+            <div class="container-wrapper">
+                <div class="header">
+                    <div class="header-title">
+                        <h1>Lighten/Darken color</h1>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="color-input">
+                        <label for="input">
+                            <span>Color (Hex): </span>
+                            <input type="text" placeholder="Example #484848">
+                        </label>
+                    </div>
+                    <div class="switch">
+                        <p>Lighten</p>
+                        <label class="toggle-switch">
+                            <input type="checkbox">
+                            <span class="toggle-slider"></span>
+                        </label>
+                        <p class="modifier">Darken</p>
+                    </div>
 
-        <h1> hi this is just a div</h1>
+                    <div class="slider">
+                        <label for="slider">
+                            <p> value : <span class="value"></span></p>
+                            <input type="range" min="1" max="100" value="50" class="slider">
+                        </label>
+                    </div>
 
-    </div>
-    <link rel="stylesheet" href="index.js">
+                    <div class="color-output">
+                        <div class="colors">
+                            <p>Input Color</p>
+                            <div class="color-block"></div>
+                        </div>
+                        <div class="colors">
+                            <p>Altered Color</p>
+                            <div class="color-block"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- js import -->
+    <script src="index.js"></script>
 </body>
 
 </html>

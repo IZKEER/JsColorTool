@@ -15,8 +15,174 @@
 /* ==================================================================== */
 /* ==================================================================== */
 /* ==================================================================== */
-/*  $1 - Fonts                                                          */
+/*                                                                      */
 /* ==================================================================== */
-#app {
-  color: red;
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+body {
+  font-size: 100%;
+  font: inherit;
+  font-family: "Kaisei Opti", sans-serif;
+}
+
+.container {
+  background: rgb(51, 51, 86);
+  color: #fff;
+  font-size: 1.25rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 50%;
+  padding: 30px;
+  transform: translate(-50%, -50%);
+}
+.container .color-input,
+.container .switch,
+.container .slider,
+.container .color-output {
+  margin-bottom: 16px;
+}
+.container-wrapper .header-title {
+  color: bisque;
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 56px;
+}
+.container-wrapper .content .color-input span {
+  margin-bottom: 10px;
+}
+.container-wrapper .content .color-input input {
+  font-size: 1rem;
+  height: 30px;
+  border: 1px solid gray;
+}
+.container-wrapper .content .color-input input:focus {
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
+.container-wrapper .content .slider input[type=range] {
+  margin: auto;
+  -webkit-appearance: none;
+  position: relative;
+  overflow: hidden;
+  height: 24px;
+  width: 200px;
+  cursor: pointer;
+  border-radius: 0; /* iOS */
+}
+.container-wrapper .content .slider:-webkit-slider-runnable-track {
+  background: #ddd;
+}
+.container-wrapper .content .slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px; /* 1 */
+  height: 40px;
+  background: #fff;
+  box-shadow: -200px 0 0 200px dodgerblue; /* 2 */
+  border: 2px solid #999; /* 1 */
+}
+.container-wrapper .content .slider::-moz-range-track {
+  height: 40px;
+  background: #ddd;
+}
+.container-wrapper .content .slider::-moz-range-thumb {
+  background: #fff;
+  height: 40px;
+  width: 20px;
+  border: 3px solid #999;
+  border-radius: 0 !important;
+  box-shadow: -200px 0 0 200px dodgerblue;
+  box-sizing: border-box;
+}
+.container-wrapper .content .slider::-ms-fill-lower {
+  background: dodgerblue;
+}
+.container-wrapper .content .slider::-ms-thumb {
+  background: #fff;
+  border: 2px solid #999;
+  height: 20px;
+  width: 20px;
+  box-sizing: border-box;
+}
+.container-wrapper .content .slider::-ms-ticks-after {
+  display: none;
+}
+.container-wrapper .content .slider::-ms-ticks-before {
+  display: none;
+}
+.container-wrapper .content .slider :-ms-track {
+  background: #ddd;
+  color: transparent;
+  height: 40px;
+  border: none;
+}
+.container-wrapper .content .slider::-ms-tooltip {
+  display: none;
+}
+.container-wrapper .content .colors {
+  margin-bottom: 32px;
+}
+.container-wrapper .content .colors p {
+  margin-bottom: 16px;
+}
+.container-wrapper .content .colors .color-block {
+  width: 75%;
+  height: 76px;
+  -webkit-box-shadow: 0px 0px 9px 2px rgba(0, 0, 0, 0.61);
+  -moz-box-shadow: 0px 0px 9px 2px rgba(0, 0, 0, 0.61);
+  box-shadow: 0px 0px 9px 2px rgba(0, 0, 0, 0.61);
+}
+.container .switch {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.container .switch .toggle-switch {
+  display: inline-block;
+  position: relative;
+  width: 54px;
+  height: 28px;
+}
+.container .switch .toggle-switch input {
+  display: none;
+}
+.container .switch .toggle-switch .toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  border-radius: 35px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+.container .switch .toggle-switch .toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: rgb(79, 77, 77);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+.container .switch .toggle-switch input:checked + .toggle-slider {
+  background-color: rgb(79, 77, 77);
+}
+.container .switch .toggle-switch input:checked + .toggle-slider:before {
+  transition: 0.4s ease-out;
+  background-color: #fff;
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
 }
