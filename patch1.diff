@@ -1,0 +1,247 @@
+From 8239630a62c391c9d6274cd7b89bffdec29f67c6 Mon Sep 17 00:00:00 2001
+From: "DESKTOP-BMFBI96\\Mediaweb" <marcelo.santos@mediaweb.pt>
+Date: Wed, 9 Nov 2022 11:11:09 +0000
+Subject: [PATCH] style: Vertical Navbar icons at the right position
+
+---
+ css/index.css                 | 68 +++++++++++++++++++++++++++++
+ index.html                    |  9 ++--
+ src/scss/components/_nav.scss | 80 +++++++++++++++++++++++++++++++++++
+ src/scss/index.scss           |  4 ++
+ 4 files changed, 155 insertions(+), 6 deletions(-)
+
+diff --git a/css/index.css b/css/index.css
+index 524e3b9..5dfa7ca 100644
+--- a/css/index.css
++++ b/css/index.css
+@@ -34,6 +34,70 @@ main {
+   border-radius: 0px 24px 24px 0px;
+   border: 1px solid #7030A0;
+ }
++.nav-block__logo {
++  padding-top: 0.5em;
++}
++.nav-block__logo button {
++  cursor: pointer;
++  border: none;
++  background-color: transparent;
++}
++.nav-block__logo button span {
++  font-size: 1.5rem;
++  color: #AE79D7;
++}
++.nav-block__icons {
++  display: flex;
++  justify-content: center;
++  align-items: center;
++  height: 25em;
++}
++.nav-block__icons button {
++  border: none;
++  background-color: #7030A0;
++  width: 48px;
++  height: 48px;
++}
++.nav-block__icons button:hover {
++  cursor: pointer;
++  border-radius: 11px;
++  background-color: #552479;
++}
++.nav-block__icons span {
++  font-size: 2rem;
++  color: #fff;
++}
++.nav-block__icons ul {
++  display: flex;
++  flex-direction: column;
++  height: 100%;
++  justify-content: space-evenly;
++}
++.nav-block__icons li {
++  list-style: none;
++}
++.nav-block__preferences {
++  justify-content: center;
++  align-items: center;
++  height: 100%;
++  padding-bottom: 3em;
++}
++.nav-block__preferences button {
++  display: inline-block;
++  border: none;
++  background-color: #7030A0;
++  width: 48px;
++  height: 48px;
++}
++.nav-block__preferences button:hover {
++  cursor: pointer;
++  border-radius: 11px;
++  background-color: #552479;
++}
++.nav-block__preferences span {
++  font-size: 2rem;
++  color: #fff;
++}
+ 
+ .aside-block {
+   position: fixed;
+@@ -451,6 +515,10 @@ h3 {
+   justify-content: space-between;
+ }
+ 
++.justify-around {
++  justify-content: space-around;
++}
++
+ .align-center {
+   align-items: center;
+ }
+\ No newline at end of file
+diff --git a/index.html b/index.html
+index 55b488e..5457399 100644
+--- a/index.html
++++ b/index.html
+@@ -17,13 +17,13 @@
+     <!-- *start of nav -->
+     <nav>
+         <div class="nav-block">
+-            <div class="flex justify-between">
++            <div class="nav-block__logo flex justify-around ">
+                 <img src="/Assets/logo/logo-26 1.png" alt="logo-image">
+                 <button>
+                     <span class="icon-angle-double-right"></span>
+                 </button>
+             </div>
+-            <div class="nav__icons">
++            <div class="nav-block__icons col-12">
+                 <ul>
+                     <li> <button>
+                             <span class="icon-home"></span>
+@@ -46,7 +46,7 @@
+                     </li>
+                 </ul>
+             </div>
+-            <div class="nav__preferences">
++            <div class="nav-block__preferences flex">
+                 <button>
+                     <span class="icon-cogwheel"></span>
+                 </button>
+@@ -66,9 +66,6 @@
+ 
+ 
+ 
+-
+-
+-
+     <!-- start of main -->
+     <main class="col-8">
+         <div class="main-wrapper">
+diff --git a/src/scss/components/_nav.scss b/src/scss/components/_nav.scss
+index 746b7de..d67e059 100644
+--- a/src/scss/components/_nav.scss
++++ b/src/scss/components/_nav.scss
+@@ -9,4 +9,84 @@
+     background-color: $purplePrimary;
+     border-radius: 0px 24px 24px 0px;
+     border: 1px solid $purplePrimary;
++
++    &__logo {
++        padding-top: 0.5em;
++
++        button {
++            cursor: pointer;
++            border: none;
++            background-color: transparent;
++
++            span {
++                font-size: 1.5rem;
++                color: $purpleTerciary;
++            }
++        }
++    }
++
++    &__icons {
++        display: flex;
++        justify-content: center;
++        align-items: center;
++        height: 25em;
++
++        button {
++            border: none;
++            background-color: $purplePrimary;
++            width: 48px;
++            height: 48px;
++
++            &:hover {
++                cursor: pointer;
++                border-radius: 11px;
++                background-color: $purpleSecondary;
++            }
++        }
++
++        span {
++            font-size: 2rem;
++            color: #fff;
++
++        }
++
++        ul {
++            display: flex;
++            flex-direction: column;
++            height: 100%;
++            justify-content: space-evenly;
++        }
++
++        li {
++            list-style: none;
++        }
++    }
++
++    &__preferences {
++        justify-content: center;
++        align-items: center;
++        height: 100%;
++        padding-bottom: 3em;
++
++
++        button {
++            display: inline-block;
++            border: none;
++            background-color: $purplePrimary;
++            width: 48px;
++            height: 48px;
++
++            &:hover {
++                cursor: pointer;
++                border-radius: 11px;
++                background-color: $purpleSecondary;
++            }
++        }
++
++        span {
++            font-size: 2rem;
++            color: #fff;
++        }
++    }
++
+ }
+\ No newline at end of file
+diff --git a/src/scss/index.scss b/src/scss/index.scss
+index 04cba5f..1bbb54d 100644
+--- a/src/scss/index.scss
++++ b/src/scss/index.scss
+@@ -253,6 +253,10 @@ h3 {
+     justify-content: space-between;
+ }
+ 
++.justify-around {
++    justify-content: space-around;
++}
++
+ .align-center {
+     align-items: center;
+ }
+\ No newline at end of file
+-- 
+2.38.1.windows.1
+
