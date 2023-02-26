@@ -1,9 +1,19 @@
 // displays the slider value 
 let slider = document.querySelector('.slider input')
 let value = document.querySelector('.slider .value')
+let alteredColor = document.querySelector('.altered-block')
+let alteredColorText = document.querySelector('.alteredColorText')
 
 slider.addEventListener('input', () => {
-    value.textContent = slider.value;
+    if (!isValidHex(inputColor.value)) return;
+
+
+    value.textContent = `${slider.value}%`;
+
+    const alteredHex = alterColor(inputColor.value, slider.value);
+    alteredColor.style.backgroundColor = alteredHex;
+    alteredColorText.innerText = `Altered Color ${alteredHex}`;
+
 })
 
 //checks if its valid Hex
@@ -11,6 +21,7 @@ slider.addEventListener('input', () => {
 
 let inputColor = document.querySelector('.hex-input')
 let colorBlock = document.querySelector('.color-block')
+
 
 //function to check if hex is a valid Hex.
 const isValidHex = (hex) => {
@@ -42,7 +53,7 @@ const convertHexToRGB = (hex) => {
     let strippedHex = hex.replace('#', '');
 
     if (strippedHex.length === 3) {
-        stripped = strippedHex + strippedHex[0] +
+        strippedHex = strippedHex + strippedHex[0] +
             strippedHex[1] + strippedHex[1] +
             strippedHex[2] + strippedHex[2];
     }
@@ -57,6 +68,7 @@ const convertHexToRGB = (hex) => {
         b
     }
 }
+//function to convert rgb to rbg
 
 const convertRGBtoHex = (r, g, b) => {
     const firstPair = ("0" + r.toString(16)).slice(-2);
@@ -68,4 +80,24 @@ const convertRGBtoHex = (r, g, b) => {
 }
 
 
-console.log(convertRGBtoHex(255, 255, 255));
+//function to create an alter color
+
+const alterColor = (hex, percentage) => {
+    const {
+        r,
+        g,
+        b
+    } = convertHexToRGB(hex);
+
+    const amount = Math.floor((percentage / 100) * 255);
+
+    const newR = increaseWithinRange0To255(r, amount);
+    const newG = increaseWithinRange0To255(g, amount);
+    const newB = increaseWithinRange0To255(b, amount);
+    return convertRGBtoHex(newR, newG, newB);
+
+}
+
+const increaseWithinRange0To255 = (hex, amount) => {
+    return Math.min(255, Math.max(0, hex + amount))
+}
