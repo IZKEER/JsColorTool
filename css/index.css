@@ -40,6 +40,9 @@ body {
   padding: 30px;
   transform: translate(-50%, -50%);
 }
+.container .active {
+  opacity: 0.25;
+}
 .container .color-input,
 .container .switch,
 .container .slider,
