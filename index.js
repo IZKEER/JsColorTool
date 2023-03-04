@@ -3,10 +3,19 @@ let slider = document.querySelector('.slider input')
 let value = document.querySelector('.slider .value')
 let alteredColor = document.querySelector('.altered-block')
 let alteredColorText = document.querySelector('.alteredColorText')
+let inputColor = document.querySelector('.hex-input')
+let colorBlock = document.querySelector('.color-block')
+
+//switch variables
+let lightenText = document.querySelector('.lighten-text');
+let darkenText = document.querySelector('.darken-text');
+let toggleSwitch = document.querySelector('.toggle-switch input[type="checkbox"]');
+
+
+
 
 slider.addEventListener('input', () => {
     if (!isValidHex(inputColor.value)) return;
-
 
     value.textContent = `${slider.value}%`;
 
@@ -16,11 +25,20 @@ slider.addEventListener('input', () => {
 
 })
 
-//checks if its valid Hex
+
+toggleSwitch.addEventListener('change', function() {
+    if (this.checked) {
+      lightenText.classList.add('active'); 
+      darkenText.classList.remove('active');
+    } else {
+      lightenText.classList.remove('active'); 
+      darkenText.classList.add('active');
+    }
+  });
 
 
-let inputColor = document.querySelector('.hex-input')
-let colorBlock = document.querySelector('.color-block')
+ 
+
 
 
 //function to check if hex is a valid Hex.
