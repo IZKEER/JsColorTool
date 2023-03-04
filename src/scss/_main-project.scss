@@ -9,6 +9,10 @@
     padding: 30px;
     transform: translate(-50%, -50%);
 
+    .active {
+        opacity: 0.25;
+    }
+
     .color-input,
     .switch,
     .slider,
